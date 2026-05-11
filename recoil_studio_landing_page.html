@@ -1,0 +1,282 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  .rs-page {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .rs-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .rs-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--color-text-primary);
+  }
+
+  .rs-logo span {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .rs-hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .rs-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-secondary);
+    padding: 4px 10px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 2rem;
+  }
+
+  .rs-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .rs-headline em {
+    font-style: normal;
+    color: var(--color-text-secondary);
+  }
+
+  .rs-subhead {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .rs-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .rs-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    color: var(--color-text-primary);
+    outline: none;
+  }
+
+  .rs-input:focus {
+    border-color: var(--color-border-primary);
+  }
+
+  .rs-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .rs-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+
+  .rs-btn:hover { opacity: 0.85; }
+  .rs-btn:active { opacity: 0.7; }
+
+  .rs-note {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+  }
+
+  .rs-divider {
+    border: none;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin: 3rem 2rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rs-how {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .rs-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin-bottom: 2rem;
+  }
+
+  .rs-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .rs-step {
+    padding: 1.25rem;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .rs-step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--color-text-tertiary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .rs-step-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.4rem;
+  }
+
+  .rs-step-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .rs-footer {
+    padding: 1.5rem 2rem;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .rs-footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--color-text-tertiary);
+  }
+
+  .rs-footer-note {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+  }
+
+  .rs-success {
+    display: none;
+    font-size: 14px;
+    color: var(--color-text-success);
+    font-weight: 500;
+    margin-top: 0.75rem;
+  }
+</style>
+
+<div class="rs-page">
+  <nav class="rs-nav">
+    <div class="rs-logo">Recoil<span>STUDIO</span></div>
+    <div style="font-size: 13px; color: var(--color-text-tertiary);">CS2 Frag Movies</div>
+  </nav>
+
+  <section class="rs-hero">
+    <div class="rs-tag">Now accepting waitlist</div>
+    <h1 class="rs-headline">Your frags.<br><em>Cinematic.</em></h1>
+    <p class="rs-subhead">Professional CS2 frag movies crafted from your demos. Cinematic smoothing, sound design, and editing — delivered monthly.</p>
+
+    <div class="rs-form">
+      <input class="rs-input" type="email" id="emailInput" placeholder="your@email.com" />
+      <button class="rs-btn" onclick="handleSignup()">Join the waitlist</button>
+    </div>
+    <p class="rs-note">No spam. Just your frag movie when it's ready.</p>
+    <p class="rs-success" id="successMsg"><i class="ti ti-check" aria-hidden="true"></i> You're on the list — we'll be in touch soon.</p>
+  </section>
+
+  <hr class="rs-divider" />
+
+  <section class="rs-how">
+    <p class="rs-section-label">How it works</p>
+    <div class="rs-steps">
+      <div class="rs-step">
+        <div class="rs-step-num">01</div>
+        <div class="rs-step-title">Submit your demos</div>
+        <div class="rs-step-desc">Send your best POV or GOTV demo files each month. We do the rest.</div>
+      </div>
+      <div class="rs-step">
+        <div class="rs-step-num">02</div>
+        <div class="rs-step-title">We craft your movie</div>
+        <div class="rs-step-desc">Cinematic camera work, custom smoothing, sound design, and editing.</div>
+      </div>
+      <div class="rs-step">
+        <div class="rs-step-num">03</div>
+        <div class="rs-step-title">You go viral</div>
+        <div class="rs-step-desc">Receive your finished frag movie ready to post. Quality before quantity.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rs-footer">
+    <div class="rs-footer-logo">Recoil Studio</div>
+    <div class="rs-footer-note">recoilstudio.gg</div>
+  </footer>
+</div>
+
+<script>
+function handleSignup() {
+  const input = document.getElementById('emailInput');
+  const success = document.getElementById('successMsg');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = 'var(--color-border-danger)';
+    return;
+  }
+  input.style.borderColor = '';
+  input.value = '';
+  success.style.display = 'block';
+}
+</script>
