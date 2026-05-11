@@ -1,282 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recoil Studio — CS2 Frag Movies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
-  
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  .rs-page {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--color-background-primary);
-    color: var(--color-text-primary);
-    min-height: 100vh;
-    padding: 0;
-  }
+    :root {
+      --bg: #0d0d0d;
+      --bg-secondary: #161616;
+      --text: #f0f0f0;
+      --text-secondary: #888;
+      --text-tertiary: #555;
+      --border: rgba(255,255,255,0.08);
+      --border-secondary: rgba(255,255,255,0.14);
+      --success: #4ade80;
+      --danger: #f87171;
+    }
 
-  .rs-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 2rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
+    html, body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0d0d0d !important;
+      color: #f0f0f0;
+      min-height: 100vh;
+    }
 
-  .rs-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: var(--color-text-primary);
-  }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
 
-  .rs-logo span {
-    color: var(--color-text-secondary);
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    letter-spacing: 3px;
-    font-weight: 300;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
 
-  .rs-hero {
-    padding: 5rem 2rem 4rem;
-    max-width: 640px;
-    margin: 0 auto;
-  }
+    .logo span {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 3px;
+      font-weight: 300;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
 
-  .rs-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    border: 0.5px solid var(--color-border-secondary);
-    padding: 4px 10px;
-    border-radius: var(--border-radius-md);
-    margin-bottom: 2rem;
-  }
+    .nav-right {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
 
-  .rs-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 8vw, 72px);
-    line-height: 0.95;
-    letter-spacing: 1px;
-    color: var(--color-text-primary);
-    margin-bottom: 1.5rem;
-  }
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
 
-  .rs-headline em {
-    font-style: normal;
-    color: var(--color-text-secondary);
-  }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border-secondary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+    }
 
-  .rs-subhead {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    max-width: 480px;
-  }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 10vw, 80px);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
 
-  .rs-form {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
+    h1 em {
+      font-style: normal;
+      color: var(--text-secondary);
+    }
 
-  .rs-input {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px 14px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    background: var(--color-background-secondary);
-    border: 0.5px solid var(--color-border-secondary);
-    border-radius: var(--border-radius-md);
-    color: var(--color-text-primary);
-    outline: none;
-  }
+    .subhead {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
 
-  .rs-input:focus {
-    border-color: var(--color-border-primary);
-  }
+    .form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
 
-  .rs-input::placeholder {
-    color: var(--color-text-tertiary);
-  }
+    input[type="email"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border-secondary);
+      border-radius: 8px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
 
-  .rs-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    background: var(--color-text-primary);
-    color: var(--color-background-primary);
-    border: none;
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-  }
+    input[type="email"]:focus {
+      border-color: rgba(255,255,255,0.3);
+    }
 
-  .rs-btn:hover { opacity: 0.85; }
-  .rs-btn:active { opacity: 0.7; }
+    input[type="email"]::placeholder {
+      color: var(--text-tertiary);
+    }
 
-  .rs-note {
-    font-size: 12px;
-    color: var(--color-text-tertiary);
-  }
+    button {
+      padding: 11px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
 
-  .rs-divider {
-    border: none;
-    border-top: 0.5px solid var(--color-border-tertiary);
-    margin: 3rem 2rem;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    button:hover { opacity: 0.85; }
+    button:active { opacity: 0.7; }
 
-  .rs-how {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 2rem 4rem;
-  }
+    .note {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
 
-  .rs-section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-text-tertiary);
-    margin-bottom: 2rem;
-  }
+    .success {
+      display: none;
+      font-size: 14px;
+      color: var(--success);
+      font-weight: 500;
+      margin-top: 0.75rem;
+    }
 
-  .rs-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-  }
+    hr {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 3rem auto;
+      max-width: 640px;
+    }
 
-  .rs-step {
-    padding: 1.25rem;
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-lg);
-    border: 0.5px solid var(--color-border-tertiary);
-  }
+    .how {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
 
-  .rs-step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--color-text-tertiary);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 2rem;
+    }
 
-  .rs-step-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-primary);
-    margin-bottom: 0.4rem;
-  }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+    }
 
-  .rs-step-desc {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
+    .step {
+      padding: 1.25rem;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 0.5px solid var(--border);
+    }
 
-  .rs-footer {
-    padding: 1.5rem 2rem;
-    border-top: 0.5px solid var(--color-border-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100%;
-  }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--text-tertiary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
 
-  .rs-footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: var(--color-text-tertiary);
-  }
+    .step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
 
-  .rs-footer-note {
-    font-size: 12px;
-    color: var(--color-text-tertiary);
-  }
+    .step-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
-  .rs-success {
-    display: none;
-    font-size: 14px;
-    color: var(--color-text-success);
-    font-weight: 500;
-    margin-top: 0.75rem;
-  }
-</style>
+    footer {
+      padding: 1.5rem 2rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-<div class="rs-page">
-  <nav class="rs-nav">
-    <div class="rs-logo">Recoil<span>STUDIO</span></div>
-    <div style="font-size: 13px; color: var(--color-text-tertiary);">CS2 Frag Movies</div>
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Recoil<span>STUDIO</span></div>
+    <div class="nav-right">CS2 Frag Movies</div>
   </nav>
 
-  <section class="rs-hero">
-    <div class="rs-tag">Now accepting waitlist</div>
-    <h1 class="rs-headline">Your frags.<br><em>Cinematic.</em></h1>
-    <p class="rs-subhead">Professional CS2 frag movies crafted from your demos. Cinematic smoothing, sound design, and editing — delivered monthly.</p>
+  <section class="hero">
+    <div class="tag">Now accepting waitlist</div>
+    <h1>Your frags.<br><em>Cinematic.</em></h1>
+    <p class="subhead">Professional CS2 frag movies crafted from your demos. Cinematic smoothing, sound design, and editing — delivered monthly.</p>
 
-    <div class="rs-form">
-      <input class="rs-input" type="email" id="emailInput" placeholder="your@email.com" />
-      <button class="rs-btn" onclick="handleSignup()">Join the waitlist</button>
+    <div class="form">
+      <input type="email" id="emailInput" placeholder="your@email.com" />
+      <button onclick="handleSignup()">Join the waitlist</button>
     </div>
-    <p class="rs-note">No spam. Just your frag movie when it's ready.</p>
-    <p class="rs-success" id="successMsg"><i class="ti ti-check" aria-hidden="true"></i> You're on the list — we'll be in touch soon.</p>
+    <p class="note">No spam. Just your frag movie when it's ready.</p>
+    <p class="success" id="successMsg">&#10003; You're on the list — we'll be in touch soon.</p>
   </section>
 
-  <hr class="rs-divider" />
+  <hr />
 
-  <section class="rs-how">
-    <p class="rs-section-label">How it works</p>
-    <div class="rs-steps">
-      <div class="rs-step">
-        <div class="rs-step-num">01</div>
-        <div class="rs-step-title">Submit your demos</div>
-        <div class="rs-step-desc">Send your best POV or GOTV demo files each month. We do the rest.</div>
+  <section class="how">
+    <p class="section-label">How it works</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Submit your demos</div>
+        <div class="step-desc">Send your best POV or GOTV demo files each month. We do the rest.</div>
       </div>
-      <div class="rs-step">
-        <div class="rs-step-num">02</div>
-        <div class="rs-step-title">We craft your movie</div>
-        <div class="rs-step-desc">Cinematic camera work, custom smoothing, sound design, and editing.</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">We craft your movie</div>
+        <div class="step-desc">Cinematic camera work, custom smoothing, sound design, and editing.</div>
       </div>
-      <div class="rs-step">
-        <div class="rs-step-num">03</div>
-        <div class="rs-step-title">You go viral</div>
-        <div class="rs-step-desc">Receive your finished frag movie ready to post. Quality before quantity.</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">You go viral</div>
+        <div class="step-desc">Receive your finished frag movie ready to post. Quality before quantity.</div>
       </div>
     </div>
   </section>
 
-  <footer class="rs-footer">
-    <div class="rs-footer-logo">Recoil Studio</div>
-    <div class="rs-footer-note">recoilstudio.gg</div>
+  <footer>
+    <div class="footer-logo">Recoil Studio</div>
+    <div class="footer-note">recoilstudio.gg</div>
   </footer>
-</div>
 
-<script>
-function handleSignup() {
-  const input = document.getElementById('emailInput');
-  const success = document.getElementById('successMsg');
-  const email = input.value.trim();
-  if (!email || !email.includes('@')) {
-    input.style.borderColor = 'var(--color-border-danger)';
-    return;
-  }
-  input.style.borderColor = '';
-  input.value = '';
-  success.style.display = 'block';
-}
-</script>
+  <script>
+    function handleSignup() {
+      const input = document.getElementById('emailInput');
+      const success = document.getElementById('successMsg');
+      const email = input.value.trim();
+      if (!email || !email.includes('@')) {
+        input.style.borderColor = '#f87171';
+        return;
+      }
+      input.style.borderColor = '';
+      input.value = '';
+      success.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
